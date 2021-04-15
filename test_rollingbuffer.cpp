@@ -5,7 +5,7 @@
 
 TEST(rollingbuffer, size) {
 
-  rolling_buffer test;
+  rolling_buffer test(10);
   for (uint32_t i = 1; i < 12; i++) {
     test.push(i);
   }
@@ -13,7 +13,7 @@ TEST(rollingbuffer, size) {
 }
 TEST(rollingbuffer, position) {
 
-  rolling_buffer test;
+  rolling_buffer test(10);
   for (uint32_t i = 0; i < 10; i++) {
     test.push(i);
     EXPECT_EQ(i, test.at(i));
@@ -21,7 +21,7 @@ TEST(rollingbuffer, position) {
 }
 TEST(rollingbuffer, afterdiscard) {
 
-  rolling_buffer test;
+  rolling_buffer test(10);
   for (uint32_t i = 0; i < 11; i++) {
     test.push(i);
   }
@@ -29,7 +29,7 @@ TEST(rollingbuffer, afterdiscard) {
 }
 TEST(rollingbuffer, size_after_discard) {
 
-  rolling_buffer test;
+  rolling_buffer test(10);
   for (uint32_t i = 0; i < 11; i++) {
     test.push(i);
   }

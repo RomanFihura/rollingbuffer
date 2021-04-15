@@ -14,7 +14,7 @@ public:
       discard();
     }
     *current_position_iterator = element;
-    //data.push_back(element);
+    // data.push_back(element);
     current_position_iterator++;
     return element;
   }
