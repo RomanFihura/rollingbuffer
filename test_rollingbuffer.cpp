@@ -27,3 +27,11 @@ TEST(rollingbuffer, afterdiscard) {
   }
   EXPECT_EQ(10, test.at(5));
 }
+TEST(rollingbuffer, size_after_discard) {
+
+  rolling_buffer test;
+  for (uint32_t i = 0; i < 11; i++) {
+    test.push(i);
+  }
+  EXPECT_EQ(6, test.size());
+}
