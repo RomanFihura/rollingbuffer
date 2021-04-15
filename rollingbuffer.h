@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iterator>
 #include <stdint.h>
 #include <vector>
@@ -7,7 +8,6 @@ class rolling_buffer {
 public:
   rolling_buffer(uint32_t size = 10)
       : data(size), current_position_iterator{data.begin()} {}
-
   uint32_t push(uint32_t element) {
     if (current_position_iterator == data.end()) {
       discard();
@@ -23,7 +23,9 @@ private:
   std::vector<int> data;
   std::vector<int>::iterator current_position_iterator;
   void discard() {
-    std::copy(data.begin() + data.size() / 2, data.end(), data.begin());
+    data.erase(data.begin(), data.begin() + data.size() / 2);
+    data.resize(10);
+    // std::copy(data.begin() + data.size() / 2, data.end(), data.begin());
     current_position_iterator =
         data.begin() + data.size() / 2 + data.size() % 2;
   }
