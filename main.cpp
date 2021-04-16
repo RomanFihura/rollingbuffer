@@ -3,7 +3,7 @@
 #include <iterator>
 #include <vector>
 int main() {
-  rolling_buffer test;
+  rolling_buffer test(10);
 
   for (uint32_t i = 1; i < 11; i++) {
     test.push(i);
